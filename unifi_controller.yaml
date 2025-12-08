@@ -216,32 +216,6 @@ spec:
     spec:
 #       imagePullSecrets:
 #         - name: ghcr-secret
-#      initContainers:
-#        - name: fix-permissions
-#          image: busybox:latest
-#          securityContext:
-#            runAsUser: 0
-#            runAsGroup: 0
-#            privileged: true
-#          command: ['sh', '-c']
-#          args:
-#            - |
-#              chmod -R 755 /data/db
-#            # - |
-#            #   echo "[DEBUG] fix-permissions initContainer started as user $(id -u):$(id -g)."
-#            #   echo "[DEBUG] Current ownership in /data/db:"
-#            #   ls -la /data/db || true
-#            #
-#            #   echo "[DEBUG] Setting everything wide open with chown/chmod."
-#            #   chown -R root:root /data/db || true
-#            #   chmod -R 0755 /data/db || true
-#            #
-#            #   echo "[DEBUG] Post-chown/chmod listing:"
-#            #   ls -la /data/db
-#            #   echo "[DEBUG] fix-permissions complete. Next container..."
-#          volumeMounts:
-#            - name: mongo-data
-#              mountPath: /data/db
 
       containers:
         - name: mongo

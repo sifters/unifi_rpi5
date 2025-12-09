@@ -48,21 +48,6 @@ spec:
 
 ---
 ###############################################################################
-# 3) Secret containing MongoDB credentials
-###############################################################################
-apiVersion: v1
-kind: Secret
-metadata:
-  name: unifi-mongo-credentials
-  namespace: unifi
-type: Opaque
-data:
-  # Example password: `echo -n password | base64 `
-  unifi_password: "cGFzc3dvcmQ="
-  root_password: "cGFzc3dvcmQ="
-
----
-###############################################################################
 # 4) UniFi Controller Deployment & Service
 ###############################################################################
 apiVersion: apps/v1
@@ -82,7 +67,7 @@ spec:
     spec:
       containers:
         - name: unifi-controller
-          image: lscr.io/linuxserver/unifi-network-application:8.6.9
+          image: lscr.io/linuxserver/unifi-network-application:arm64v8-10.0.162
           imagePullPolicy: Always
           securityContext:
             runAsUser: 0
